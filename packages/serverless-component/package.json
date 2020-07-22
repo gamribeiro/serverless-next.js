@@ -1,6 +1,6 @@
 {
   "name": "ze-delivery-component",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "See [main README page](../../README.md)",
   "main": "dist/component.js",
   "types": "dist/component.d.ts",

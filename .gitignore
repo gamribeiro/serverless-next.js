@@ -8,9 +8,11 @@ examples/basic-next-serverless-app/build
 .next
 sls-next-build
 .serverless_nextjs
+packages/cloudfront/dist
+packages/lambda-at-edge/dist
+packages/s3-static-assets/dist
 **/examples/**/package-lock.json
 .DS_Store
-dist
 .vscode
 .env
 .package-lock.json
