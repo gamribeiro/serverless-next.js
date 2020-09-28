@@ -14,17 +14,18 @@
     "api gateway"
   ],
   "scripts": {
-    "test": "jest --runInBand",
+    "test": "jest --runInBand --coverage",
     "packages-install": "lerna exec -- yarn install --frozen-lockfile",
     "packages-build": "lerna run build",
     "test:watch": "yarn test --watch --collect-coverage=false",
-    "publish": "lerna publish --conventional-commits",
-    "prerelease": "lerna publish --conventional-commits --conventional-prerelease",
-    "graduate": "lerna publish --conventional-commits --conventional-graduate",
+    "publish": "lerna publish --conventional-commits --exact --create-release github",
+    "prerelease": "lerna publish --conventional-commits --conventional-prerelease --exact --create-release github",
+    "graduate": "lerna publish --conventional-commits --conventional-graduate --exact --create-release github",
     "lint": "eslint .",
-    "coveralls": "jest --runInBand --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "integration": "jest --runInBand --config jest.integration.config.json --setupTestFrameworkScriptFile=./jest.integration.setup.js",
-    "postinstall": "yarn packages-install && opencollective-postinstall || true"
+    "postinstall": "yarn packages-install && opencollective-postinstall || true",
+    "docs": "cd documentation && yarn && yarn build"
   },
   "repository": {
     "type": "git",
@@ -38,8 +39,8 @@
   "homepage": "https://github.com/danielcondemarin/serverless-next.js#readme",
   "devDependencies": {
     "@babel/preset-typescript": "^7.10.4",
-    "@sls-next/lambda-at-edge": "link:./packages/lambda-at-edge",
-    "@sls-next/next-aws-cloudfront": "link:./packages/lambda-at-edge-compat",
+    "@sls-next/lambda-at-edge": "link:./packages/libs/lambda-at-edge",
+    "@sls-next/next-aws-cloudfront": "link:./packages/compat-layers/lambda-at-edge-compat",
     "@types/fs-extra": "^9.0.1",
     "@types/jest": "^26.0.3",
     "@types/react": "^16.9.41",
@@ -77,8 +78,8 @@
     },
     "coverageDirectory": "<rootDir>/coverage/",
     "coveragePathIgnorePatterns": [
-      "<rootDir>/packages/serverless-plugin/utils/yml/cfSchema.js",
-      "<rootDir>/packages/serverless-plugin/utils/test",
+      "<rootDir>/packages/deprecated/serverless-plugin/utils/yml/cfSchema.js",
+      "<rootDir>/packages/deprecated/serverless-plugin/utils/test",
       "/.serverless_nextjs/",
       "/fixtures/",
       "/fixture/",
@@ -91,12 +92,14 @@
       "/fixtures/"
     ],
     "testPathIgnorePatterns": [
+      "<rootDir>/packages/deprecated/serverless-plugin/*",
       "/.next/",
       "/node_modules/",
       "/fixtures/",
       "/fixture/",
       "/examples/",
-      "/integration/"
+      "/integration/",
+      "/cypress/"
     ],
     "setupFiles": [
       "<rootDir>/jest.setup.js"
@@ -115,7 +118,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,md,yml}": "prettier --write"
+    "*.{js,jsx,ts,tsx,md,yml}": "prettier --write"
   },
   "resolutions": {
     "which": "^2.0.1",

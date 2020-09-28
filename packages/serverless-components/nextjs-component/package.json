@@ -1,0 +1,34 @@
+{
+  "name": "ze-delivery-component",
+  "version": "1.0.3",
+  "description": "See [main README page](../../README.md)",
+  "main": "dist/component.js",
+  "types": "dist/component.d.ts",
+"dependencies": {
+    "@serverless/aws-s3": "^4.2.0",
+    "@serverless/core": "^1.1.2",
+    "@sls-next/aws-cloudfront": "^1.0.2-alpha.1",
+    "@sls-next/aws-lambda": "^1.0.1-alpha.0",
+    "@sls-next/cloudfront": "^1.0.2-alpha.0",
+    "@sls-next/domain": "^1.0.1-alpha.0",
+    "@sls-next/lambda-at-edge": "^1.5.2-alpha.0",
+    "@sls-next/next-aws-cloudfront": "^1.4.1-alpha.0",
+    "@sls-next/s3-static-assets": "^1.2.2-alpha.0",
+    "aws-sdk": "^2.702.0",
+    "fs-extra": "^9.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://git@github.com/gamribeiro/serverless-next.js.git"
+  },
+  "author": "Guilherme Ribeiro <gamribeiro1703@gmail.com> (https://github.com/gamribeiro/serverless-next.js)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gamribeiro/serverless-next.js/issues"
+  },
+  "homepage": "https://github.com/gamribeiro/serverless-next.js#readme"
+}

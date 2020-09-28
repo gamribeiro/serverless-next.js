@@ -17,3 +17,4 @@ packages/s3-static-assets/dist
 .env
 .package-lock.json
 yarn-error.log
+instructions.txt
