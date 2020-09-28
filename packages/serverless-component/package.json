@@ -1,6 +1,6 @@
 {
   "name": "ze-delivery-component",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "See [main README page](../../README.md)",
   "main": "dist/component.js",
   "types": "dist/component.d.ts",
@@ -19,7 +19,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "yarn build",
+    "build": "tsc -p tsconfig.build.json"
   },
   "repository": {
     "type": "git",
